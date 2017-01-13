@@ -1,6 +1,9 @@
 {% extends "layout/base.html" %}
 {% block head %}
     {{ super() }}
+    <!--external css-->
+    <link href="{{url_for('static', filename='assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css', _external=True)}}" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.css', _external=True)}}" type="text/css">
     <style type="text/css">
         .important { color: #336699; }
     </style>

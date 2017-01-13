@@ -8,14 +8,10 @@
 import os
 
 def setDir(dirs=''):
-    path_tmp = os.path.join(dirs, 'tmp')
-    os.mkdir(path_tmp)
-    path_app = os.path.join(dirs, 'app')
-    os.mkdir(path_app)
-    path_static = os.path.join(path_app, 'static')
-    os.mkdir(path_static)
-    path_templates = os.path.join(path_app, 'templates')
-    os.mkdir(path_templates)
+    os.mkdir(dirs + '/tmp')
+    os.mkdir(dirs + '/app')
+    os.mkdir(dirs + '/static')
+    os.mkdir(dirs + '/templates')
     # config文件
     config = ['DEBUG = False']
     file_config = os.path.join(dirs, 'config.py')

@@ -8,8 +8,8 @@
     <meta name="author" content="{{author if author else 'kelly'}}">
     <meta name="keyword" content="{{keyword if keyword else 'wechat'}}">
     <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
-    <title>{{title if title else 'wechat'}}</title>
-    {% block head %} 
+    <title>{{title}}</title>
+   
     <!-- Bootstrap core CSS -->
     <link href="{{url_for('static', filename='css/bootstrap.min.css', _external=True)}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/bootstrap-reset.css', _external=True)}}" rel="stylesheet">
@@ -25,34 +25,15 @@
       <script src="{{url_for('static', filename='js/html5shiv.js', _external=True)}}"></script>
       <script src="{{url_for('static', filename='js/respond.min.js', _external=True)}}"></script>
     <![endif]-->
-    {% endblock %}
+
   </head>
 
-  <body>
+  <body class="body-{{title}}">
 
   <section id="container" class="">
-      <!--header start-->
-        {% block header %}{% endblock %}
-      <!--header end-->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              {% block sidebar %}{% endblock %}
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-           {% block main %}{% endblock %}
-          </section>
-      </section>
-      <!--main content end-->
+  {% block main %}
+      
+  {% endblock %}
   </section>
-
-    {% block foot %}{% endblock %}
-
   </body>
 </html>
