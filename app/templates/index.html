@@ -1,4 +1,4 @@
-{% extends "layout/base.html" %}
+{% extends "layout/base_in.html" %}
 {% block head %}
     {{ super() }}
     <!--external css-->
@@ -260,36 +260,5 @@
 {% endblock %}
 
 {% block foot %}
-<!-- js placed at the end of the document so the pages load faster -->
-    <script src="{{url_for('static', filename='js/jquery.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/jquery-1.8.3.min.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/bootstrap.min.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/jquery.scrollTo.min.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/jquery.nicescroll.js', _external=True)}}" type="text/javascript"></script>
-    <script src="{{url_for('static', filename='js/jquery.sparkline.js', _external=True)}}" type="text/javascript"></script>
-    <script src="{{url_for('static', filename='assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/owl.carousel.js', _external=True)}}" ></script>
-    <!--common script for all pages-->
-    <script src="{{url_for('static', filename='js/common-scripts.js', _external=True)}}"></script>
-
-    <!--script for this page-->
-    <script src="{{url_for('static', filename='js/sparkline-chart.js', _external=True)}}"></script>
-    <script src="{{url_for('static', filename='js/easy-pie-chart.js', _external=True)}}"></script>
-
-  <script>
-
-      //owl carousel
-
-      $(document).ready(function() {
-          $("#owl-demo").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true
-
-          });
-      });
-
-
-  </script>
-  {% endblock %}
+{{ super() }}
+{% endblock %}

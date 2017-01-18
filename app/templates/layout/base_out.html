@@ -28,7 +28,7 @@
 
   </head>
 
-  <body class="body-{{title}}">
+  <body class="{{class_body if class_body else 'body-' + title}}">
 
   <section id="container" class="">
   {% block main %}

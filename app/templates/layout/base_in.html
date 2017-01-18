@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="{{description if description else 'description text'}}">
+    <meta name="author" content="{{author if author else 'kelly'}}">
+    <meta name="keyword" content="{{keyword if keyword else 'wechat'}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <title>{{title if title else 'wechat'}}</title>
+    {% block head %} 
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css', _external=True)}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap-reset.css', _external=True)}}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{url_for('static', filename='assets/font-awesome/css/font-awesome.css', _external=True)}}" rel="stylesheet" />
+    
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/style.css', _external=True)}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style-responsive.css', _external=True)}}" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{{url_for('static', filename='js/html5shiv.js', _external=True)}}"></script>
+      <script src="{{url_for('static', filename='js/respond.min.js', _external=True)}}"></script>
+    <![endif]-->
+    {% endblock %}
+  </head>
+
+  <body>
+
+  <section id="container" class="">
+      <!--header start-->
+        {% block header %}{% endblock %}
+      <!--header end-->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              {% block sidebar %}{% endblock %}
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+          
+            <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="#"><i class="icon-home"></i> Home</a></li>
+                          <li><a href="#">Library</a></li>
+                          <li class="active">Data</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="row">
+                  <div class="col-lg-12">
+                  <!--message start -->
+                  {% for message in messages %}
+            <div class="alert alert-success alert-block fade in">
+                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                      <i class="icon-remove"></i>
+                                  </button>
+                                  <h4>
+                                      <i class="icon-ok-sign"></i>
+                                      Success!
+                                  </h4>
+                                  <p>{{ message }}</p>
+                              </div>
+                {% endfor %}
+             <!--message end -->
+             </div>
+            </div>
+            {% endif %}
+            {% endwith %}
+           {% block main %}{% endblock %}
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+
+    {% block foot %}
+    <script src="{{url_for('static', filename='js/jquery.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/jquery-1.8.3.min.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.scrollTo.min.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.nicescroll.js', _external=True)}}" type="text/javascript"></script>
+    <script src="{{url_for('static', filename='js/jquery.sparkline.js', _external=True)}}" type="text/javascript"></script>
+    <script src="{{url_for('static', filename='assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/owl.carousel.js', _external=True)}}" ></script>
+    <!--common script for all pages-->
+    <script src="{{url_for('static', filename='js/common-scripts.js', _external=True)}}"></script>
+
+    <!--script for this page-->
+    <script src="{{url_for('static', filename='js/sparkline-chart.js', _external=True)}}"></script>
+    <script src="{{url_for('static', filename='js/easy-pie-chart.js', _external=True)}}"></script>
+
+  <script>
+
+      //owl carousel
+
+      $(document).ready(function() {
+          $("#owl-demo").owlCarousel({
+              navigation : true,
+              slideSpeed : 300,
+              paginationSpeed : 400,
+              singleItem : true
+
+          });
+      });
+
+
+  </script>
+    {% endblock %}
+
+  </body>
+</html>

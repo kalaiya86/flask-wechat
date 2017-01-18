@@ -1,0 +1,53 @@
+{% extends "layout/base_out.html" %}
+{% block main %}
+<script type="text/javascript">
+function set_openid(openid, pr)
+{
+    u = openid.search('<username>')
+    if (u != -1) {
+        // openid requires username
+        user = prompt('Enter your ' + pr + ' username:')
+        openid = openid.substr(0, u) + user
+    }
+    form = document.forms['login'];
+    form.elements['openid'].value = openid
+}
+</script>
+    <div class="container">
+
+      <form class="form-signin" action="{{url_for('login', _external=True)}}" method="post" name="login">
+        {{form.hidden_tag()}}
+        <h2 class="form-signin-heading">sign in now</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" placeholder="User ID" autofocus>
+            {{form.openid}}
+            {% for error in form.openid.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            |{% for pr in providers %}
+              <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">{{ pr.name }}</a> |
+            {% endfor %}
+            <input type="password" class="form-control" placeholder="Password">
+            <label class="checkbox">
+                {{form.remember_me}} Remember me
+                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+            </label>
+            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+            <p>or you can sign in via social network</p>
+            <div class="login-social-link">
+                <a href="index.html" class="facebook">
+                    <i class="icon-facebook"></i>
+                    Facebook
+                </a>
+                <a href="index.html" class="twitter">
+                    <i class="icon-twitter"></i>
+                    Twitter
+                </a>
+            </div>
+
+        </div>
+
+      </form>
+
+    </div>
+{% endblock %}

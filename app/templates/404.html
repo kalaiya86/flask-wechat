@@ -1,7 +1,9 @@
-{% extends "layout/error.html" %}
+{% extends "layout/base_common.html" %}
 {% block main %}
-<i class="icon-{{title}}"></i>
-          <h1>{{title}}</h1>
-          <h2>page not found</h2>
-          <p class="page-{{title}}">Something went wrong or that page doesn’t exist yet. <a href="{{url_for('index', _external=True)}}">Return Home</a></p>
+<section class="error-wrapper">
+    <i class="icon-{{title}}"></i>
+    <h1>{{title}}</h1>
+    <h2>page not found</h2>
+    <p class="page-{{title}}">Something went wrong or that page doesn’t exist yet. <a href="{{url_for('index', _external=True)}}">Return Home</a></p>
+</section>
 {% endblock %}
