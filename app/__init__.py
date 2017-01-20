@@ -8,15 +8,14 @@ from config import basedir
 # from flask.ext.sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config.from_object('config')
-db = SQLAlchemy(app)
 
-from app import views
+db = SQLAlchemy(app)
 
 lm = LoginManager()
 lm.init_app(app)
-# lm.login_view = 'login'
+lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
-
+from app import views
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -33,3 +32,4 @@ def internal_server_error(e):
 @app.route('/set/account')
 def account():
     return render_template('account.html', title='account')
+
